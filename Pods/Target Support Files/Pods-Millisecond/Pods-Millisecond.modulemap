@@ -1,0 +1,6 @@
+framework module Pods_Millisecond {
+  umbrella header "Pods-Millisecond-umbrella.h"
+
+  export *
+  module * { export * }
+}
