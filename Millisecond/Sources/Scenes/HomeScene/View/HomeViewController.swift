@@ -7,8 +7,6 @@
 
 import UIKit
 
-import RxRelay
-
 final class HomeViewController: BaseViewController {
 
     // MARK: - Properties
