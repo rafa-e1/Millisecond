@@ -124,15 +124,15 @@ final class GameViewController: BaseViewController {
         }
 
         exitButton.do {
-            $0.backgroundColor = .white
+            $0.backgroundColor = .systemRed
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 10
             $0.setAttributedTitle(
                 NSAttributedString(
                     string: "나가기",
                     attributes: [
-                        .font: UIFont.systemFont(ofSize: 17, weight: .regular),
-                        .foregroundColor: UIColor.black
+                        .font: UIFont.systemFont(ofSize: 17, weight: .bold),
+                        .foregroundColor: UIColor.white
                     ]
                 ),
                 for: .normal
