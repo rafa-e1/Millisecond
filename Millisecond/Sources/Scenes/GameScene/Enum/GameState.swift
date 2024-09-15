@@ -8,5 +8,5 @@
 import Foundation
 
 enum GameState {
-    case red, yellow, green, result
+    case red, orange, green, result
 }

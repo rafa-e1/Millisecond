@@ -77,9 +77,9 @@ final class GameViewModel {
         switch state {
         case .red:
             resetState()
-        case .yellow:
+        case .orange:
             stopTimer()
-            gameStateRelay.accept(.yellow)
+            gameStateRelay.accept(.orange)
             currentGuideTextRelay.accept(.restartPrompt)
         case .green:
             startTime = Date()

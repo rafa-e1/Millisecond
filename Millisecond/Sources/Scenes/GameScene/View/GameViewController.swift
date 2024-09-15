@@ -24,7 +24,7 @@ final class GameViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,8 +44,8 @@ final class GameViewController: BaseViewController {
     @objc private func handleTap() {
         let currentState = viewModel.gameStateRelay.value
         switch currentState {
-        case .red: viewModel.input.stateChanged.accept(.yellow)
-        case .yellow: viewModel.input.startTest.accept(())
+        case .red: viewModel.input.stateChanged.accept(.orange)
+        case .orange: viewModel.input.startTest.accept(())
         case .green: viewModel.input.stateChanged.accept(.result)
         case .result: viewModel.input.startTest.accept(())
         }
@@ -191,9 +191,9 @@ private extension GameViewController {
         }
 
         switch state {
-        case .red: 
+        case .red:
             guideLabel.isHidden = false
-        case .yellow:
+        case .orange:
             jokeLabel.isHidden = false
             guideLabel.isHidden = false
             exitButton.isHidden = false
@@ -212,7 +212,7 @@ private extension GameViewController {
         case .red:
             view.backgroundColor = .systemRed
             guideLabel.textColor = .white
-        case .yellow:
+        case .orange:
             view.backgroundColor = .systemYellow
             guideLabel.textColor = .black
         case .green:
