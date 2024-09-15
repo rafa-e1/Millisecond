@@ -496,7 +496,7 @@
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Millisecond;
+				INFOPLIST_KEY_CFBundleDisplayName = "밀리세컨드";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -532,7 +532,7 @@
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Millisecond;
+				INFOPLIST_KEY_CFBundleDisplayName = "밀리세컨드";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
