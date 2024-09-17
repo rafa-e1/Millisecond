@@ -31,10 +31,8 @@ final class GameViewModel {
 
     private let currentGuideTextRelay = BehaviorRelay<GameGuideText>(value: .restartPrompt)
     private let reactionTimeTextRelay = BehaviorRelay<String>(value: "")
-
     private var startTime: Date?
-    private var timer: Timer?
-
+    private var timerDisposable: Disposable?
     private let disposeBag = DisposeBag()
 
     // MARK: - Initializer
@@ -64,13 +62,15 @@ final class GameViewModel {
         resetState()
 
         let randomDelay = Double.random(in: 1.0...5.0)
-        timer = Timer.scheduledTimer(
-            withTimeInterval: randomDelay,
-            repeats: false
-        ) { [weak self] _ in
-            self?.gameStateRelay.accept(.green)
-            self?.startTime = Date()
-        }
+
+        timerDisposable?.dispose()
+
+        timerDisposable = Observable<Int>.timer(.seconds(Int(randomDelay)), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.gameStateRelay.accept(.green)
+                self?.startTime = Date()
+            })
+        timerDisposable?.disposed(by: disposeBag)
     }
 
     func handleStateChange(_ state: GameState) {
@@ -78,7 +78,7 @@ final class GameViewModel {
         case .red:
             resetState()
         case .orange:
-            stopTimer()
+            timerDisposable?.dispose()
             gameStateRelay.accept(.orange)
             currentGuideTextRelay.accept(.restartPrompt)
         case .green:
@@ -87,7 +87,6 @@ final class GameViewModel {
         case .result:
             if let startTime = startTime {
                 let reactionTime = Date().timeIntervalSince(startTime) * 1_000
-                stopTimer()
                 gameStateRelay.accept(.result)
                 currentGuideTextRelay.accept(.restartPrompt)
                 reactionTimeTextRelay.accept(String(format: "반응속도: %.0fms", reactionTime))
@@ -96,15 +95,10 @@ final class GameViewModel {
     }
 
     private func resetState() {
-        stopTimer()
+        timerDisposable?.dispose()
         gameStateRelay.accept(.red)
         currentGuideTextRelay.accept(.startPrompt)
         reactionTimeTextRelay.accept("")
-    }
-
-    private func stopTimer() {
-        timer?.invalidate()
-        timer = nil
     }
 
     private func bindInput() {
