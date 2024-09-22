@@ -12,6 +12,7 @@ final class GameViewController: BaseViewController {
     // MARK: - Properties
 
     private let resultTitleLabel = UILabel()
+    private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
     private let guideLabel = UILabel()
     private let reactionSpeedLabel = UILabel()
@@ -64,6 +65,11 @@ final class GameViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
 
+        viewModel.output.testCounter
+            .map { "\($0) / 5" }
+            .drive(testCounterLabel.rx.text)
+            .disposed(by: disposeBag)
+
         viewModel.output.currentGuideText
             .map { $0.rawValue }
             .drive(guideLabel.rx.text)
@@ -98,6 +104,13 @@ final class GameViewController: BaseViewController {
             $0.textColor = .white
             $0.textAlignment = .center
             $0.font = .systemFont(ofSize: 60, weight: .heavy)
+            $0.isHidden = true
+        }
+
+        testCounterLabel.do {
+            $0.textColor = .white
+            $0.textAlignment = .center
+            $0.font = .systemFont(ofSize: 30, weight: .bold)
             $0.isHidden = true
         }
 
@@ -143,7 +156,12 @@ final class GameViewController: BaseViewController {
     }
 
     override func setupSubviews() {
-        [resultTitleLabel, jokeLabel, guideLabel, reactionSpeedLabel, exitButton].forEach {
+        [resultTitleLabel,
+         testCounterLabel,
+         jokeLabel,
+         guideLabel,
+         reactionSpeedLabel,
+         exitButton].forEach {
             view.addSubview($0)
         }
     }
@@ -155,10 +173,16 @@ final class GameViewController: BaseViewController {
             $0.left.equalTo(16)
         }
 
+        testCounterLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(resultTitleLabel.snp.bottom).offset(5)
+            $0.left.equalTo(resultTitleLabel)
+        }
+
         jokeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(resultTitleLabel.snp.bottom).offset(26)
-            $0.left.equalTo(resultTitleLabel)
+            $0.top.equalTo(testCounterLabel.snp.bottom).offset(26)
+            $0.left.equalTo(testCounterLabel)
         }
 
         guideLabel.snp.makeConstraints {
@@ -186,7 +210,12 @@ final class GameViewController: BaseViewController {
 private extension GameViewController {
 
     func updateVisibility(for state: GameState) {
-        [resultTitleLabel, jokeLabel, guideLabel, reactionSpeedLabel, exitButton].forEach {
+        [resultTitleLabel,
+         testCounterLabel,
+         jokeLabel,
+         guideLabel,
+         reactionSpeedLabel,
+         exitButton].forEach {
             $0.isHidden = true
         }
 
@@ -201,6 +230,7 @@ private extension GameViewController {
             break
         case .result:
             resultTitleLabel.isHidden = false
+            testCounterLabel.isHidden = false
             guideLabel.isHidden = false
             reactionSpeedLabel.isHidden = false
             exitButton.isHidden = false
