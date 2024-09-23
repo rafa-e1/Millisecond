@@ -11,11 +11,13 @@ final class GameViewController: BaseViewController {
 
     // MARK: - Properties
 
+    private let progressView = SegmentedProgressBar(numberOfSegments: 5)
     private let resultTitleLabel = UILabel()
     private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
     private let guideLabel = UILabel()
-    private let reactionSpeedLabel = UILabel()
+    private let reactionTimeHistoryLabel = UILabel()
+    private let averageReactionTimeLabel = UILabel()
     private let exitButton = UIButton(type: .system)
     private let viewModel: GameViewModel
 
@@ -66,8 +68,15 @@ final class GameViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         viewModel.output.testCounter
-            .map { "\($0) / 5" }
-            .drive(testCounterLabel.rx.text)
+            .drive(onNext: { [weak self] count in
+                self?.progressView.updateProgress(segmentIndex: count - 1, progress: 1.0)
+                self?.testCounterLabel.text = "\(count) / 5"
+                if count == 5 {
+                    self?.averageReactionTimeLabel.isHidden = false
+                } else {
+                    self?.averageReactionTimeLabel.isHidden = true
+                }
+            })
             .disposed(by: disposeBag)
 
         viewModel.output.currentGuideText
@@ -75,8 +84,13 @@ final class GameViewController: BaseViewController {
             .drive(guideLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel.output.reactionTimeText
-            .drive(reactionSpeedLabel.rx.text)
+        viewModel.output.reactionTimeHistory
+            .map { $0.joined(separator: "\n") }
+            .drive(reactionTimeHistoryLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.output.averageReactionTime
+            .drive(averageReactionTimeLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
@@ -99,18 +113,17 @@ final class GameViewController: BaseViewController {
     override func setupUI() {
         view.backgroundColor = .systemRed
 
+        testCounterLabel.do {
+            $0.textColor = .white
+            $0.textAlignment = .right
+            $0.font = .systemFont(ofSize: 17, weight: .bold)
+        }
+
         resultTitleLabel.do {
             $0.text = "결과"
             $0.textColor = .white
             $0.textAlignment = .center
             $0.font = .systemFont(ofSize: 60, weight: .heavy)
-            $0.isHidden = true
-        }
-
-        testCounterLabel.do {
-            $0.textColor = .white
-            $0.textAlignment = .center
-            $0.font = .systemFont(ofSize: 30, weight: .bold)
             $0.isHidden = true
         }
 
@@ -129,8 +142,15 @@ final class GameViewController: BaseViewController {
             $0.isHidden = true
         }
 
-        reactionSpeedLabel.do {
+        reactionTimeHistoryLabel.do {
             $0.font = .systemFont(ofSize: 24, weight: .bold)
+            $0.textAlignment = .left
+            $0.numberOfLines = 0
+            $0.isHidden = true
+        }
+
+        averageReactionTimeLabel.do {
+            $0.font = .systemFont(ofSize: 30, weight: .heavy)
             $0.textAlignment = .center
             $0.numberOfLines = 0
             $0.isHidden = true
@@ -156,18 +176,20 @@ final class GameViewController: BaseViewController {
     }
 
     override func setupSubviews() {
-        [resultTitleLabel,
+        [progressView,
          testCounterLabel,
+         resultTitleLabel,
          jokeLabel,
          guideLabel,
-         reactionSpeedLabel,
+         reactionTimeHistoryLabel,
+         averageReactionTimeLabel,
          exitButton].forEach {
             view.addSubview($0)
         }
     }
 
     override func setConstraints() {
-        resultTitleLabel.snp.makeConstraints {
+        progressView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.left.equalTo(16)
@@ -175,14 +197,20 @@ final class GameViewController: BaseViewController {
 
         testCounterLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(resultTitleLabel.snp.bottom).offset(5)
-            $0.left.equalTo(resultTitleLabel)
+            $0.top.equalTo(progressView.snp.bottom).offset(5)
+            $0.left.equalTo(progressView).offset(10)
+        }
+
+        resultTitleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(testCounterLabel.snp.bottom).offset(10)
+            $0.left.equalTo(testCounterLabel)
         }
 
         jokeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(testCounterLabel.snp.bottom).offset(26)
-            $0.left.equalTo(testCounterLabel)
+            $0.top.equalTo(resultTitleLabel.snp.bottom).offset(26)
+            $0.left.equalTo(resultTitleLabel)
         }
 
         guideLabel.snp.makeConstraints {
@@ -191,14 +219,20 @@ final class GameViewController: BaseViewController {
             $0.left.equalTo(jokeLabel)
         }
 
-        reactionSpeedLabel.snp.makeConstraints {
+        reactionTimeHistoryLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.left.equalTo(16)
+            $0.left.equalTo(guideLabel)
+        }
+
+        averageReactionTimeLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(reactionTimeHistoryLabel.snp.bottom).offset(30)
+            $0.left.equalTo(reactionTimeHistoryLabel)
         }
 
         exitButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.left.equalTo(16)
+            $0.left.equalTo(reactionTimeHistoryLabel)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
             $0.height.equalTo(50)
         }
@@ -211,28 +245,33 @@ private extension GameViewController {
 
     func updateVisibility(for state: GameState) {
         [resultTitleLabel,
-         testCounterLabel,
          jokeLabel,
          guideLabel,
-         reactionSpeedLabel,
+         reactionTimeHistoryLabel,
+         averageReactionTimeLabel,
          exitButton].forEach {
             $0.isHidden = true
         }
 
         switch state {
         case .red:
+            progressView.isHidden = false
+            testCounterLabel.isHidden = false
             guideLabel.isHidden = false
         case .orange:
+            progressView.isHidden = true
+            testCounterLabel.isHidden = true
             jokeLabel.isHidden = false
             guideLabel.isHidden = false
             exitButton.isHidden = false
         case .green:
             break
         case .result:
-            resultTitleLabel.isHidden = false
+            progressView.isHidden = false
             testCounterLabel.isHidden = false
+            resultTitleLabel.isHidden = false
             guideLabel.isHidden = false
-            reactionSpeedLabel.isHidden = false
+            reactionTimeHistoryLabel.isHidden = false
             exitButton.isHidden = false
         }
     }
@@ -250,7 +289,8 @@ private extension GameViewController {
         case .result:
             view.backgroundColor = .systemGreen
             guideLabel.textColor = .white
-            reactionSpeedLabel.textColor = .white
+            reactionTimeHistoryLabel.textColor = .white
+            averageReactionTimeLabel.textColor = .white
         }
     }
 }
