@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
 		05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F48BE62C9467C200DABF81 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				05F48C072C94748200DABF81 /* GameViewController.swift */,
+				058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */,
+				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48C0F2C9608F700DABF81 /* GameGuideText.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
