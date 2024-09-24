@@ -68,7 +68,7 @@ final class GameViewController: BaseViewController {
 
         viewModel.output.testCounter
             .drive(onNext: { [weak self] count in
-                self?.progressView.updateProgress(segmentIndex: count - 1, progress: 1.0)
+                self?.updateProgressBar(for: count)
                 self?.testCounterLabel.text = "\(count) / 5"
                 self?.averageReactionTimeLabel.isHidden = count != 5
             })
@@ -100,6 +100,16 @@ final class GameViewController: BaseViewController {
     private func updateUI(for state: GameState) {
         updateVisibility(for: state)
         updateColors(for: state)
+    }
+
+    private func updateProgressBar(for count: Int) {
+        if count == 0 {
+            segmentedProgressBar.resetProgressWithoutAnimation()
+        } else {
+            segmentedProgressBar.updateProgress(segmentIndex: count - 1, progress: 1.0)
+        }
+        testCounterLabel.text = "\(count) / 5"
+        averageReactionTimeLabel.isHidden = count != 5
     }
 
     // MARK: - UI
@@ -249,11 +259,11 @@ private extension GameViewController {
 
         switch state {
         case .red:
-            progressView.isHidden = false
+            segmentedProgressBar.isHidden = false
             testCounterLabel.isHidden = false
             guideLabel.isHidden = false
         case .orange:
-            progressView.isHidden = true
+            segmentedProgressBar.isHidden = true
             testCounterLabel.isHidden = true
             jokeLabel.isHidden = false
             guideLabel.isHidden = false
@@ -261,7 +271,7 @@ private extension GameViewController {
         case .green:
             break
         case .result:
-            progressView.isHidden = false
+            segmentedProgressBar.isHidden = false
             testCounterLabel.isHidden = false
             resultTitleLabel.isHidden = false
             guideLabel.isHidden = false
