@@ -30,6 +30,7 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.isNavigationBarHidden = true
         bind()
     }
 
@@ -51,6 +52,7 @@ final class HomeViewController: BaseViewController {
     private func navigateToGameVC() {
         let gameVC = GameViewController()
         let navigationController = UINavigationController(rootViewController: gameVC)
+        navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
     }
