@@ -20,6 +20,7 @@ final class GameViewModel {
     struct Output {
         let gameState: Driver<GameState>
         let testCounter: Driver<Int>
+        let resultText: Driver<String>
         let guideText: Driver<String>
         let reactionTimeHistory: Driver<[String]>
         let averageReactionTime: Driver<String>
@@ -34,6 +35,7 @@ final class GameViewModel {
     let gameStateRelay = BehaviorRelay<GameState>(value: .red)
 
     private let testCounterRelay = BehaviorRelay<Int>(value: 0)
+    private let resultTextRelay = BehaviorRelay<String>(value: "N/A")
     private let guideTextRelay = BehaviorRelay<String>(value: GameState.red.guideText)
     private let reactionTimeHistoryRelay = BehaviorRelay<[String]>(value: [])
     private let averageReactionTimeRelay = BehaviorRelay<String>(value: "N/A")
@@ -58,9 +60,10 @@ final class GameViewModel {
             input: input,
             gameStateRelay: gameStateRelay,
             testCounterRelay: testCounterRelay,
+            resultTextRelay: resultTextRelay,
             guideTextRelay: guideTextRelay,
             reactionTimeHistoryRelay: reactionTimeHistoryRelay,
-            averageReactionTimeRelay: averageReactionTimeRelay
+            averageReactionTimeRelay: averageReactionTimeRelay,
             resetProgressBarRelay: resetProgressBarRelay
         )
 
@@ -97,17 +100,19 @@ final class GameViewModel {
         input: Input,
         gameStateRelay: BehaviorRelay<GameState>,
         testCounterRelay: BehaviorRelay<Int>,
+        resultTextRelay: BehaviorRelay<String>,
         guideTextRelay: BehaviorRelay<String>,
         reactionTimeHistoryRelay: BehaviorRelay<[String]>,
-        averageReactionTimeRelay: BehaviorRelay<String>
+        averageReactionTimeRelay: BehaviorRelay<String>,
         resetProgressBarRelay: PublishRelay<Void>
     ) -> Output {
         return Output(
             gameState: gameStateRelay.asDriver(onErrorJustReturn: .red),
             testCounter: testCounterRelay.asDriver(onErrorJustReturn: 0),
+            resultText: resultTextRelay.asDriver(onErrorJustReturn: "N/A"),
             guideText: guideTextRelay.asDriver(onErrorJustReturn: GameState.red.guideText),
             reactionTimeHistory: reactionTimeHistoryRelay.asDriver(onErrorJustReturn: []),
-            averageReactionTime: averageReactionTimeRelay.asDriver(onErrorJustReturn: "N/A")
+            averageReactionTime: averageReactionTimeRelay.asDriver(onErrorJustReturn: "N/A"),
             resetProgressBar: resetProgressBarRelay.asSignal()
         )
     }
@@ -169,11 +174,11 @@ private extension GameViewModel {
 
         let reactionTime = Date().timeIntervalSince(startTime) * 1_000
         let newCount = testCounterRelay.value + 1
-
         var history = reactionTimeHistoryRelay.value
-        history.append(String(format: "\(newCount). 반응속도: %.0fms", reactionTime))
-        reactionTimeHistoryRelay.accept(history)
 
+        history.append(String(format: "\(newCount). 반응속도: %.0fms", reactionTime))
+        resultTextRelay.accept(String(format: "%.0fms", reactionTime))
+        reactionTimeHistoryRelay.accept(history)
         testCounterRelay.accept(newCount)
 
         if newCount == 5 {
