@@ -11,7 +11,7 @@ final class GameViewController: BaseViewController {
 
     // MARK: - Properties
 
-    private let progressView = SegmentedProgressBar(numberOfSegments: 5)
+    private let segmentedProgressBar = SegmentedProgressBar(numberOfSegments: 5)
     private let resultTitleLabel = UILabel()
     private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
