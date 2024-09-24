@@ -16,9 +16,11 @@ final class GameViewController: BaseViewController {
     private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
     private let guideLabel = UILabel()
-    private let dividerView = UIView()
+    private let topDividerView = UIView()
     private let reactionTimeHistoryLabel = UILabel()
+    private let bottomDividerView = UIView()
     private let averageReactionTimeLabel = UILabel()
+    private let rankLabel = UILabel()
     private let exitButton = UIButton(type: .system)
     private let viewModel: GameViewModel
 
@@ -72,6 +74,7 @@ final class GameViewController: BaseViewController {
                 self?.updateProgressBar(for: count)
                 self?.testCounterLabel.text = "\(count) / 5"
                 self?.averageReactionTimeLabel.isHidden = count != 5
+                self?.bottomDividerView.isHidden = count != 5
             })
             .disposed(by: disposeBag)
 
@@ -90,6 +93,10 @@ final class GameViewController: BaseViewController {
 
         viewModel.output.averageReactionTime
             .drive(averageReactionTimeLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.output.rankText
+            .drive(rankLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
@@ -115,6 +122,7 @@ final class GameViewController: BaseViewController {
         }
         testCounterLabel.text = "\(count) / 5"
         averageReactionTimeLabel.isHidden = count != 5
+        rankLabel.isHidden = count != 5
     }
 
     // MARK: - UI
@@ -150,7 +158,7 @@ final class GameViewController: BaseViewController {
             $0.isHidden = true
         }
 
-        dividerView.do {
+        topDividerView.do {
             $0.backgroundColor = .systemBackground
             $0.isHidden = true
         }
@@ -162,7 +170,19 @@ final class GameViewController: BaseViewController {
             $0.isHidden = true
         }
 
+        bottomDividerView.do {
+            $0.backgroundColor = .systemBackground
+            $0.isHidden = true
+        }
+
         averageReactionTimeLabel.do {
+            $0.font = .systemFont(ofSize: 30, weight: .heavy)
+            $0.textAlignment = .center
+            $0.numberOfLines = 0
+            $0.isHidden = true
+        }
+
+        rankLabel.do {
             $0.font = .systemFont(ofSize: 30, weight: .heavy)
             $0.textAlignment = .center
             $0.numberOfLines = 0
@@ -194,9 +214,11 @@ final class GameViewController: BaseViewController {
          resultLabel,
          jokeLabel,
          guideLabel,
-         dividerView,
+         topDividerView,
          reactionTimeHistoryLabel,
+         bottomDividerView,
          averageReactionTimeLabel,
+         rankLabel,
          exitButton].forEach {
             view.addSubview($0)
         }
@@ -233,7 +255,7 @@ final class GameViewController: BaseViewController {
             $0.left.equalTo(jokeLabel)
         }
 
-        dividerView.snp.makeConstraints {
+        topDividerView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(guideLabel.snp.bottom).offset(20)
             $0.left.equalTo(guideLabel)
@@ -242,19 +264,32 @@ final class GameViewController: BaseViewController {
 
         reactionTimeHistoryLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(dividerView.snp.bottom).offset(20)
-            $0.left.equalTo(dividerView)
+            $0.top.equalTo(topDividerView.snp.bottom).offset(20)
+            $0.left.equalTo(topDividerView)
+        }
+
+        bottomDividerView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(reactionTimeHistoryLabel.snp.bottom).offset(20)
+            $0.left.equalTo(reactionTimeHistoryLabel)
+            $0.height.equalTo(2)
         }
 
         averageReactionTimeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(reactionTimeHistoryLabel.snp.bottom).offset(30)
-            $0.left.equalTo(reactionTimeHistoryLabel)
+            $0.top.equalTo(bottomDividerView.snp.bottom).offset(30)
+            $0.left.equalTo(bottomDividerView)
+        }
+
+        rankLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(averageReactionTimeLabel.snp.bottom).offset(20)
+            $0.left.equalTo(averageReactionTimeLabel)
         }
 
         exitButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.left.equalTo(reactionTimeHistoryLabel)
+            $0.left.equalTo(rankLabel)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
             $0.height.equalTo(50)
         }
@@ -269,9 +304,11 @@ private extension GameViewController {
         [resultLabel,
          jokeLabel,
          guideLabel,
-         dividerView,
+         topDividerView,
          reactionTimeHistoryLabel,
+         bottomDividerView,
          averageReactionTimeLabel,
+         rankLabel,
          exitButton].forEach {
             $0.isHidden = true
         }
@@ -294,7 +331,7 @@ private extension GameViewController {
             testCounterLabel.isHidden = false
             resultLabel.isHidden = false
             guideLabel.isHidden = false
-            dividerView.isHidden = false
+            topDividerView.isHidden = false
             reactionTimeHistoryLabel.isHidden = false
             exitButton.isHidden = false
         }
@@ -315,6 +352,7 @@ private extension GameViewController {
             guideLabel.textColor = .white
             reactionTimeHistoryLabel.textColor = .white
             averageReactionTimeLabel.textColor = .white
+            rankLabel.textColor = .white
         }
     }
 }
