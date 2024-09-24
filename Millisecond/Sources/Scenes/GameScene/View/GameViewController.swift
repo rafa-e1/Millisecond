@@ -12,7 +12,7 @@ final class GameViewController: BaseViewController {
     // MARK: - Properties
 
     private let segmentedProgressBar = SegmentedProgressBar(numberOfSegments: 5)
-    private let resultTitleLabel = UILabel()
+    private let resultLabel = UILabel()
     private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
     private let guideLabel = UILabel()
@@ -74,6 +74,10 @@ final class GameViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
 
+        viewModel.output.resultText
+            .drive(resultLabel.rx.text)
+            .disposed(by: disposeBag)
+
         viewModel.output.guideText
             .drive(guideLabel.rx.text)
             .disposed(by: disposeBag)
@@ -123,8 +127,7 @@ final class GameViewController: BaseViewController {
             $0.font = .systemFont(ofSize: 17, weight: .bold)
         }
 
-        resultTitleLabel.do {
-            $0.text = "결과"
+        resultLabel.do {
             $0.textColor = .white
             $0.textAlignment = .center
             $0.font = .systemFont(ofSize: 60, weight: .heavy)
@@ -180,9 +183,9 @@ final class GameViewController: BaseViewController {
     }
 
     override func setupSubviews() {
-        [progressView,
+        [segmentedProgressBar,
          testCounterLabel,
-         resultTitleLabel,
+         resultLabel,
          jokeLabel,
          guideLabel,
          reactionTimeHistoryLabel,
@@ -243,12 +246,12 @@ final class GameViewController: BaseViewController {
     }
 }
 
-// MARK: - UI Helpers
+// MARK: - Private Helpers
 
 private extension GameViewController {
 
     func updateVisibility(for state: GameState) {
-        [resultTitleLabel,
+        [resultLabel,
          jokeLabel,
          guideLabel,
          reactionTimeHistoryLabel,
@@ -273,7 +276,7 @@ private extension GameViewController {
         case .result:
             segmentedProgressBar.isHidden = false
             testCounterLabel.isHidden = false
-            resultTitleLabel.isHidden = false
+            resultLabel.isHidden = false
             guideLabel.isHidden = false
             reactionTimeHistoryLabel.isHidden = false
             exitButton.isHidden = false
