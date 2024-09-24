@@ -23,6 +23,7 @@ final class GameViewModel {
         let guideText: Driver<String>
         let reactionTimeHistory: Driver<[String]>
         let averageReactionTime: Driver<String>
+        let resetProgressBar: Signal<Void>
     }
 
     // MARK: - Properties
@@ -36,6 +37,7 @@ final class GameViewModel {
     private let guideTextRelay = BehaviorRelay<String>(value: GameState.red.guideText)
     private let reactionTimeHistoryRelay = BehaviorRelay<[String]>(value: [])
     private let averageReactionTimeRelay = BehaviorRelay<String>(value: "N/A")
+    private let resetProgressBarRelay = PublishRelay<Void>()
 
     private var startTime: Date?
     private var timerDisposable: Disposable?
@@ -59,6 +61,7 @@ final class GameViewModel {
             guideTextRelay: guideTextRelay,
             reactionTimeHistoryRelay: reactionTimeHistoryRelay,
             averageReactionTimeRelay: averageReactionTimeRelay
+            resetProgressBarRelay: resetProgressBarRelay
         )
 
         bindInput()
@@ -97,6 +100,7 @@ final class GameViewModel {
         guideTextRelay: BehaviorRelay<String>,
         reactionTimeHistoryRelay: BehaviorRelay<[String]>,
         averageReactionTimeRelay: BehaviorRelay<String>
+        resetProgressBarRelay: PublishRelay<Void>
     ) -> Output {
         return Output(
             gameState: gameStateRelay.asDriver(onErrorJustReturn: .red),
@@ -104,6 +108,7 @@ final class GameViewModel {
             guideText: guideTextRelay.asDriver(onErrorJustReturn: GameState.red.guideText),
             reactionTimeHistory: reactionTimeHistoryRelay.asDriver(onErrorJustReturn: []),
             averageReactionTime: averageReactionTimeRelay.asDriver(onErrorJustReturn: "N/A")
+            resetProgressBar: resetProgressBarRelay.asSignal()
         )
     }
 }
@@ -146,6 +151,7 @@ private extension GameViewModel {
         testCounterRelay.accept(0)
         reactionTimeHistoryRelay.accept([])
         averageReactionTimeRelay.accept("N/A")
+        resetProgressBarRelay.accept(())
     }
 
     func resetAllTests() {
