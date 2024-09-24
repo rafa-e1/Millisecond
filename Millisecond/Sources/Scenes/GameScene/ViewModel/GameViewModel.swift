@@ -87,13 +87,15 @@ final class GameViewModel {
     }
 
     private func handleStateChange(_ state: GameState) {
+        gameStateRelay.accept(state)
+        guideTextRelay.accept(state.guideText)
+
         switch state {
         case .red: resetTest()
         case .orange: resetAllTests()
         case .green: startTest()
         case .result: handleTestResult()
         }
-        guideTextRelay.accept(state.guideText)
     }
 
     private static func transform(
@@ -122,24 +124,12 @@ private extension GameViewModel {
 
     func prepareForTest() {
         resetTest()
-
-        let randomDelay = Double.random(in: 1.0...5.0)
-
-        timerDisposable?.dispose()
-
-        timerDisposable = Observable<Int>.timer(
-            .seconds(Int(randomDelay)),
-            scheduler: MainScheduler.instance
-        )
-        .subscribe(onNext: { [weak self] _ in
-            self?.startTest()
-        })
-
-        timerDisposable?.disposed(by: disposeBag)
+        setTimerWithRandomDelay()
     }
 
     func startTest() {
         gameStateRelay.accept(.green)
+        guideTextRelay.accept(GameState.green.guideText)
         startTime = Date()
     }
 
@@ -150,6 +140,7 @@ private extension GameViewModel {
 
         timerDisposable?.dispose()
         gameStateRelay.accept(.red)
+        guideTextRelay.accept(GameState.red.guideText)
     }
 
     func resetTestCountAndHistory() {
@@ -162,6 +153,7 @@ private extension GameViewModel {
     func resetAllTests() {
         timerDisposable?.dispose()
         gameStateRelay.accept(.orange)
+        guideTextRelay.accept(GameState.orange.guideText)
         testCounterRelay.accept(0)
         reactionTimeHistoryRelay.accept([])
         averageReactionTimeRelay.accept("N/A")
@@ -184,6 +176,22 @@ private extension GameViewModel {
         if newCount == 5 {
             calculateAverageReactionTime()
         }
+    }
+
+    func setTimerWithRandomDelay() {
+        let randomDelay = Double.random(in: 1.0...5.0)
+
+        timerDisposable?.dispose()
+
+        timerDisposable = Observable<Int>.timer(
+            .seconds(Int(randomDelay)),
+            scheduler: MainScheduler.instance
+        )
+        .subscribe(onNext: { [weak self] _ in
+            self?.startTest()
+        })
+
+        timerDisposable?.disposed(by: disposeBag)
     }
 
     func calculateAverageReactionTime() {
