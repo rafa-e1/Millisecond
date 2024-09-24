@@ -22,7 +22,7 @@ final class SegmentedProgressBar: UIView {
         self.numberOfSegments = numberOfSegments
         super.init(frame: .zero)
 
-        setViews()
+        configureUI()
         setConstraints()
     }
 
@@ -35,19 +35,26 @@ final class SegmentedProgressBar: UIView {
     func updateProgress(segmentIndex: Int, progress: Float) {
         guard segmentIndex < fillViews.count else { return }
 
-        let updateBlock = { [weak self] in
-            self?.updateFillWidths(segmentIndex: segmentIndex, progress: progress)
-            self?.layoutIfNeeded()
-        }
-
         UIView.animate(withDuration: 0.3) {
-            updateBlock()
+            self.updateFillWidths(segmentIndex: segmentIndex, progress: progress)
+            self.layoutIfNeeded()
+        }
+    }
+
+    func resetProgressWithoutAnimation() {
+        UIView.performWithoutAnimation {
+            fillViews.forEach { fillView in
+                fillView.snp.updateConstraints {
+                    $0.width.equalTo(0)
+                }
+            }
+            layoutIfNeeded()
         }
     }
 
     // MARK: - UI
 
-    private func setViews() {
+    private func configureUI() {
         for _ in 0..<numberOfSegments {
             let segment = createSegmentView()
             let fillView = createFillView()
@@ -81,20 +88,25 @@ final class SegmentedProgressBar: UIView {
             }
         }
     }
+}
 
-    private func calculateSegmentWidth() -> CGFloat {
+// MARK: - Private Helpers
+
+private extension SegmentedProgressBar {
+
+    func calculateSegmentWidth() -> CGFloat {
         let totalSpacing = 10 * CGFloat(numberOfSegments - 1)
-        return (UIScreen.main.bounds.width - 40 - totalSpacing) / CGFloat(numberOfSegments)
+        return (UIScreen.main.bounds.width - 32 - totalSpacing) / CGFloat(numberOfSegments)
     }
 
-    private func createSegmentView() -> UIView {
+    func createSegmentView() -> UIView {
         let segment = UIView()
         segment.layer.cornerRadius = 2
         segment.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         return segment
     }
 
-    private func createFillView() -> UIView {
+    func createFillView() -> UIView {
         let fillView = UIView()
         fillView.layer.cornerRadius = 2
         fillView.backgroundColor = .systemIndigo
@@ -102,7 +114,7 @@ final class SegmentedProgressBar: UIView {
         return fillView
     }
 
-    private func updateFillWidths(segmentIndex: Int, progress: Float) {
+    func updateFillWidths(segmentIndex: Int, progress: Float) {
         for (index, fillView) in fillViews.enumerated() {
             fillView.snp.updateConstraints {
                 if index < segmentIndex {
@@ -112,14 +124,6 @@ final class SegmentedProgressBar: UIView {
                 } else {
                     $0.width.equalTo(0)
                 }
-            }
-        }
-    }
-
-    func resetProgress() {
-        fillViews.forEach { fillView in
-            fillView.snp.updateConstraints {
-                $0.width.equalTo(0)
             }
         }
     }
