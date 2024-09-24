@@ -60,7 +60,7 @@ final class HomeViewController: BaseViewController {
     // MARK: - UI
 
     override func setupUI() {
-        view.backgroundColor = .black
+        view.backgroundColor = .backgroundColor
 
         startButton.do {
             $0.backgroundColor = .white

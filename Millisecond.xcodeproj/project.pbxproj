@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		058627502CA2DE6400BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Scoreboard.swift; path = Millisecond/Sources/Scenes/GameScene/Scoreboard.swift; sourceTree = SOURCE_ROOT; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,10 @@
 		4E2466FADCA52612520E0C36 /* Pods-Millisecond.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Millisecond.release.xcconfig"; path = "Target Support Files/Pods-Millisecond/Pods-Millisecond.release.xcconfig"; sourceTree = "<group>"; };
 		BE3A139FE4FAF0783083CDC0 /* Pods-Millisecond.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Millisecond.debug.xcconfig"; path = "Target Support Files/Pods-Millisecond/Pods-Millisecond.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0586274A2CA2DB4F00BB44B4 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		05F48BD72C9467C000DABF81 /* Frameworks */ = {
@@ -121,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				05F48BF82C946B1B00DABF81 /* Base */,
+				0586274A2CA2DB4F00BB44B4 /* Extension */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 		05F48C062C94746F00DABF81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +250,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0586274A2CA2DB4F00BB44B4 /* Extension */,
 			);
 			name = Millisecond;
 			productName = Millisecond;
@@ -349,6 +360,7 @@
 				05F48C0D2C9600CB00DABF81 /* GameState.swift in Sources */,
 				05F48BFC2C94705500DABF81 /* HomeViewController.swift in Sources */,
 				05F48C0A2C9476E200DABF81 /* GameViewModel.swift in Sources */,
+				058627502CA2DE6400BB44B4 /* Scoreboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
