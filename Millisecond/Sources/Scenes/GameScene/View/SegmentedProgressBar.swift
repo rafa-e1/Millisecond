@@ -97,7 +97,7 @@ final class SegmentedProgressBar: UIView {
     private func createFillView() -> UIView {
         let fillView = UIView()
         fillView.layer.cornerRadius = 2
-        fillView.backgroundColor = .systemBlue
+        fillView.backgroundColor = .systemIndigo
         fillView.clipsToBounds = true
         return fillView
     }
