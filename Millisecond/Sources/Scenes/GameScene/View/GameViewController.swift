@@ -16,6 +16,7 @@ final class GameViewController: BaseViewController {
     private let testCounterLabel = UILabel()
     private let jokeLabel = UILabel()
     private let guideLabel = UILabel()
+    private let dividerView = UIView()
     private let reactionTimeHistoryLabel = UILabel()
     private let averageReactionTimeLabel = UILabel()
     private let exitButton = UIButton(type: .system)
@@ -149,6 +150,11 @@ final class GameViewController: BaseViewController {
             $0.isHidden = true
         }
 
+        dividerView.do {
+            $0.backgroundColor = .systemBackground
+            $0.isHidden = true
+        }
+
         reactionTimeHistoryLabel.do {
             $0.font = .systemFont(ofSize: 20, weight: .semibold)
             $0.textAlignment = .left
@@ -188,6 +194,7 @@ final class GameViewController: BaseViewController {
          resultLabel,
          jokeLabel,
          guideLabel,
+         dividerView,
          reactionTimeHistoryLabel,
          averageReactionTimeLabel,
          exitButton].forEach {
@@ -226,10 +233,17 @@ final class GameViewController: BaseViewController {
             $0.left.equalTo(jokeLabel)
         }
 
-        reactionTimeHistoryLabel.snp.makeConstraints {
+        dividerView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(guideLabel.snp.bottom).offset(20)
             $0.left.equalTo(guideLabel)
+            $0.height.equalTo(2)
+        }
+
+        reactionTimeHistoryLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(dividerView.snp.bottom).offset(20)
+            $0.left.equalTo(dividerView)
         }
 
         averageReactionTimeLabel.snp.makeConstraints {
@@ -255,6 +269,7 @@ private extension GameViewController {
         [resultLabel,
          jokeLabel,
          guideLabel,
+         dividerView,
          reactionTimeHistoryLabel,
          averageReactionTimeLabel,
          exitButton].forEach {
@@ -279,6 +294,7 @@ private extension GameViewController {
             testCounterLabel.isHidden = false
             resultLabel.isHidden = false
             guideLabel.isHidden = false
+            dividerView.isHidden = false
             reactionTimeHistoryLabel.isHidden = false
             exitButton.isHidden = false
         }
