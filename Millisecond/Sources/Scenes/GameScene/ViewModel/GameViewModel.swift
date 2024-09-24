@@ -25,6 +25,7 @@ final class GameViewModel {
         let reactionTimeHistory: Driver<[String]>
         let averageReactionTime: Driver<String>
         let resetProgressBar: Signal<Void>
+        let rankText: Driver<String>
     }
 
     // MARK: - Properties
@@ -40,6 +41,7 @@ final class GameViewModel {
     private let reactionTimeHistoryRelay = BehaviorRelay<[String]>(value: [])
     private let averageReactionTimeRelay = BehaviorRelay<String>(value: "N/A")
     private let resetProgressBarRelay = PublishRelay<Void>()
+    private let rankTextRelay = BehaviorRelay<String>(value: "")
 
     private var startTime: Date?
     private var timerDisposable: Disposable?
@@ -64,7 +66,8 @@ final class GameViewModel {
             guideTextRelay: guideTextRelay,
             reactionTimeHistoryRelay: reactionTimeHistoryRelay,
             averageReactionTimeRelay: averageReactionTimeRelay,
-            resetProgressBarRelay: resetProgressBarRelay
+            resetProgressBarRelay: resetProgressBarRelay,
+            rankTextRelay: rankTextRelay
         )
 
         bindInput()
@@ -106,7 +109,8 @@ final class GameViewModel {
         guideTextRelay: BehaviorRelay<String>,
         reactionTimeHistoryRelay: BehaviorRelay<[String]>,
         averageReactionTimeRelay: BehaviorRelay<String>,
-        resetProgressBarRelay: PublishRelay<Void>
+        resetProgressBarRelay: PublishRelay<Void>,
+        rankTextRelay: BehaviorRelay<String>
     ) -> Output {
         return Output(
             gameState: gameStateRelay.asDriver(onErrorJustReturn: .red),
@@ -115,7 +119,8 @@ final class GameViewModel {
             guideText: guideTextRelay.asDriver(onErrorJustReturn: GameState.red.guideText),
             reactionTimeHistory: reactionTimeHistoryRelay.asDriver(onErrorJustReturn: []),
             averageReactionTime: averageReactionTimeRelay.asDriver(onErrorJustReturn: "N/A"),
-            resetProgressBar: resetProgressBarRelay.asSignal()
+            resetProgressBar: resetProgressBarRelay.asSignal(),
+            rankText: rankTextRelay.asDriver(onErrorJustReturn: "")
         )
     }
 }
@@ -175,6 +180,15 @@ private extension GameViewModel {
 
         if newCount == 5 {
             calculateAverageReactionTime()
+
+            let averageTime = reactionTimeHistoryRelay.value.compactMap {
+                Double($0.components(separatedBy: " ")
+                    .last?
+                    .replacingOccurrences(of: "ms", with: "") ?? "")
+            }.reduce(0, +) / Double(reactionTimeHistoryRelay.value.count)
+
+            let rank = Scoreboard.calculateScore(from: averageTime)
+            rankTextRelay.accept(rank)
         }
     }
 
