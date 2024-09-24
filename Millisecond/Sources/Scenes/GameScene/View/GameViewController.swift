@@ -48,9 +48,8 @@ final class GameViewController: BaseViewController {
         let currentState = viewModel.gameStateRelay.value
         switch currentState {
         case .red: viewModel.input.stateChanged.accept(.orange)
-        case .orange: viewModel.input.startTest.accept(())
+        case .orange, .result: viewModel.input.startTest.accept(())
         case .green: viewModel.input.stateChanged.accept(.result)
-        case .result: viewModel.input.startTest.accept(())
         }
     }
 
@@ -71,16 +70,11 @@ final class GameViewController: BaseViewController {
             .drive(onNext: { [weak self] count in
                 self?.progressView.updateProgress(segmentIndex: count - 1, progress: 1.0)
                 self?.testCounterLabel.text = "\(count) / 5"
-                if count == 5 {
-                    self?.averageReactionTimeLabel.isHidden = false
-                } else {
-                    self?.averageReactionTimeLabel.isHidden = true
-                }
+                self?.averageReactionTimeLabel.isHidden = count != 5
             })
             .disposed(by: disposeBag)
 
-        viewModel.output.currentGuideText
-            .map { $0.rawValue }
+        viewModel.output.guideText
             .drive(guideLabel.rx.text)
             .disposed(by: disposeBag)
 
