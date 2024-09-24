@@ -150,7 +150,7 @@ final class GameViewController: BaseViewController {
         }
 
         reactionTimeHistoryLabel.do {
-            $0.font = .systemFont(ofSize: 24, weight: .bold)
+            $0.font = .systemFont(ofSize: 20, weight: .semibold)
             $0.textAlignment = .left
             $0.numberOfLines = 0
             $0.isHidden = true
@@ -196,7 +196,7 @@ final class GameViewController: BaseViewController {
     }
 
     override func setConstraints() {
-        progressView.snp.makeConstraints {
+        segmentedProgressBar.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.left.equalTo(16)
@@ -204,20 +204,20 @@ final class GameViewController: BaseViewController {
 
         testCounterLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(progressView.snp.bottom).offset(5)
-            $0.left.equalTo(progressView).offset(10)
+            $0.top.equalTo(segmentedProgressBar.snp.bottom).offset(5)
+            $0.left.equalTo(segmentedProgressBar)
         }
 
-        resultTitleLabel.snp.makeConstraints {
+        resultLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(testCounterLabel.snp.bottom).offset(10)
+            $0.top.equalTo(testCounterLabel.snp.bottom).offset(26)
             $0.left.equalTo(testCounterLabel)
         }
 
         jokeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(resultTitleLabel.snp.bottom).offset(26)
-            $0.left.equalTo(resultTitleLabel)
+            $0.top.equalTo(resultLabel.snp.bottom).offset(26)
+            $0.left.equalTo(resultLabel)
         }
 
         guideLabel.snp.makeConstraints {
@@ -227,7 +227,8 @@ final class GameViewController: BaseViewController {
         }
 
         reactionTimeHistoryLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(guideLabel.snp.bottom).offset(20)
             $0.left.equalTo(guideLabel)
         }
 
