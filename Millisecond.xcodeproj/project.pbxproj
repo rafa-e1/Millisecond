@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		058627502CA2DE6400BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */; };
+		0586275E2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0586275D2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Scoreboard.swift; path = Millisecond/Sources/Scenes/GameScene/Scoreboard.swift; sourceTree = SOURCE_ROOT; };
+		0586275D2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				05F48BEB2C9467C200DABF81 /* Info.plist */,
+				0586275D2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy */,
 				05F48BF22C9469B600DABF81 /* Resources */,
 				05F48BF12C9469AA00DABF81 /* Sources */,
 			);
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0586275E2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy in Resources */,
 				05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */,
 				05F48BEA2C9467C200DABF81 /* Base in Resources */,
 			);
