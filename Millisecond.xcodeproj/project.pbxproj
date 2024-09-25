@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		058627502CA2DE6400BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */; };
 		0586275E2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0586275D2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy */; };
 		058627612CA3F41E00BB44B4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 058627602CA3F41E00BB44B4 /* logo.png */; };
+		058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627742CA3F93A00BB44B4 /* Scoreboard.swift */; };
+		058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627782CA3F96F00BB44B4 /* UIColor+.swift */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
@@ -25,9 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Scoreboard.swift; path = Millisecond/Sources/Scenes/GameScene/Scoreboard.swift; sourceTree = SOURCE_ROOT; };
 		0586275D2CA3E21300BB44B4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		058627602CA3F41E00BB44B4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		058627742CA3F93A00BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		058627782CA3F96F00BB44B4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,14 +47,6 @@
 		4E2466FADCA52612520E0C36 /* Pods-Millisecond.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Millisecond.release.xcconfig"; path = "Target Support Files/Pods-Millisecond/Pods-Millisecond.release.xcconfig"; sourceTree = "<group>"; };
 		BE3A139FE4FAF0783083CDC0 /* Pods-Millisecond.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Millisecond.debug.xcconfig"; path = "Target Support Files/Pods-Millisecond/Pods-Millisecond.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0586274A2CA2DB4F00BB44B4 /* Extension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Extension;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		05F48BD72C9467C000DABF81 /* Frameworks */ = {
@@ -72,6 +66,22 @@
 				058627602CA3F41E00BB44B4 /* logo.png */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		058627732CA3F92D00BB44B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				058627742CA3F93A00BB44B4 /* Scoreboard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		058627772CA3F96200BB44B4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				058627782CA3F96F00BB44B4 /* UIColor+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		05F48BD12C9467C000DABF81 = {
@@ -145,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				05F48BF82C946B1B00DABF81 /* Base */,
-				0586274A2CA2DB4F00BB44B4 /* Extension */,
+				058627772CA3F96200BB44B4 /* Extension */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -187,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				05F48C0B2C9600B800DABF81 /* Enum */,
-				05F48C062C94746F00DABF81 /* Model */,
+				058627732CA3F92D00BB44B4 /* Model */,
 				05F48C052C94746D00DABF81 /* View */,
 				05F48C042C94746600DABF81 /* ViewModel */,
 			);
@@ -209,14 +219,6 @@
 				058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		05F48C062C94746F00DABF81 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0586274F2CA2DE6400BB44B4 /* Scoreboard.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		05F48C0B2C9600B800DABF81 /* Enum */ = {
@@ -260,9 +262,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0586274A2CA2DB4F00BB44B4 /* Extension */,
 			);
 			name = Millisecond;
 			productName = Millisecond;
@@ -367,12 +366,13 @@
 				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
+				058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */,
 				05F48C022C9472CD00DABF81 /* HomeViewModel.swift in Sources */,
 				05F48C082C94748200DABF81 /* GameViewController.swift in Sources */,
 				05F48C0D2C9600CB00DABF81 /* GameState.swift in Sources */,
 				05F48BFC2C94705500DABF81 /* HomeViewController.swift in Sources */,
+				058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */,
 				05F48C0A2C9476E200DABF81 /* GameViewModel.swift in Sources */,
-				058627502CA2DE6400BB44B4 /* Scoreboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
