@@ -193,7 +193,7 @@ private extension GameViewModel {
     }
 
     func setTimerWithRandomDelay() {
-        let randomDelay = Double.random(in: 1.0...5.0)
+        let randomDelay = Double.random(in: 1.0...1.0)
 
         timerDisposable?.dispose()
 

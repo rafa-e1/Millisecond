@@ -268,10 +268,10 @@
 			};
 			buildConfigurationList = 05F48BD52C9467C000DABF81 /* Build configuration list for PBXProject "Millisecond" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ko,
 				Base,
 			);
 			mainGroup = 05F48BD12C9467C000DABF81;
