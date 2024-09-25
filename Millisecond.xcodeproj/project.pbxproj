@@ -143,7 +143,6 @@
 		05F48BFD2C9472A300DABF81 /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
-				05F48BFF2C9472B600DABF81 /* Model */,
 				05F48BFE2C9472B000DABF81 /* View */,
 				05F48C002C9472BF00DABF81 /* ViewModel */,
 			);
@@ -156,13 +155,6 @@
 				05F48BFB2C94705500DABF81 /* HomeViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		05F48BFF2C9472B600DABF81 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		05F48C002C9472BF00DABF81 /* ViewModel */ = {
