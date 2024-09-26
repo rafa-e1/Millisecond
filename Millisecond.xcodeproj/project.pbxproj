@@ -10,7 +10,6 @@
 		058627612CA3F41E00BB44B4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 058627602CA3F41E00BB44B4 /* logo.png */; };
 		058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627742CA3F93A00BB44B4 /* Scoreboard.swift */; };
 		058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627782CA3F96F00BB44B4 /* UIColor+.swift */; };
-		0586277B2CA53EE700BB44B4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0586277A2CA53EE700BB44B4 /* PrivacyInfo.xcprivacy */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
@@ -29,7 +28,6 @@
 		058627602CA3F41E00BB44B4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		058627742CA3F93A00BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		058627782CA3F96F00BB44B4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		0586277A2CA53EE700BB44B4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				05F48BEB2C9467C200DABF81 /* Info.plist */,
-				0586277A2CA53EE700BB44B4 /* PrivacyInfo.xcprivacy */,
 				05F48BF22C9469B600DABF81 /* Resources */,
 				05F48BF12C9469AA00DABF81 /* Sources */,
 			);
@@ -308,7 +305,6 @@
 			files = (
 				058627612CA3F41E00BB44B4 /* logo.png in Resources */,
 				05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */,
-				0586277B2CA53EE700BB44B4 /* PrivacyInfo.xcprivacy in Resources */,
 				05F48BEA2C9467C200DABF81 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,7 +512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
@@ -552,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
