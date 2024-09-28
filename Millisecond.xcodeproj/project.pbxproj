@@ -10,6 +10,9 @@
 		058627612CA3F41E00BB44B4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 058627602CA3F41E00BB44B4 /* logo.png */; };
 		058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627742CA3F93A00BB44B4 /* Scoreboard.swift */; };
 		058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058627782CA3F96F00BB44B4 /* UIColor+.swift */; };
+		058628172CA8228200BB44B4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058628162CA8228200BB44B4 /* MainTabBarViewController.swift */; };
+		0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586281E2CA8250E00BB44B4 /* LeaderboardViewController.swift */; };
+		058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058628232CA8256000BB44B4 /* SettingViewController.swift */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
@@ -28,6 +31,9 @@
 		058627602CA3F41E00BB44B4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		058627742CA3F93A00BB44B4 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		058627782CA3F96F00BB44B4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		058628162CA8228200BB44B4 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		0586281E2CA8250E00BB44B4 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		058628232CA8256000BB44B4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,46 @@
 				058627782CA3F96F00BB44B4 /* UIColor+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		058628192CA824CA00BB44B4 /* MainTabScene */ = {
+			isa = PBXGroup;
+			children = (
+				058628162CA8228200BB44B4 /* MainTabBarViewController.swift */,
+			);
+			path = MainTabScene;
+			sourceTree = "<group>";
+		};
+		0586281A2CA824E400BB44B4 /* LeaderboardScene */ = {
+			isa = PBXGroup;
+			children = (
+				058628202CA8252000BB44B4 /* View */,
+			);
+			path = LeaderboardScene;
+			sourceTree = "<group>";
+		};
+		058628202CA8252000BB44B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0586281E2CA8250E00BB44B4 /* LeaderboardViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		058628212CA8254900BB44B4 /* SettingScene */ = {
+			isa = PBXGroup;
+			children = (
+				058628222CA8255300BB44B4 /* View */,
+			);
+			path = SettingScene;
+			sourceTree = "<group>";
+		};
+		058628222CA8255300BB44B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				058628232CA8256000BB44B4 /* SettingViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		05F48BD12C9467C000DABF81 = {
@@ -142,8 +188,11 @@
 		05F48BF42C946A1A00DABF81 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				058628192CA824CA00BB44B4 /* MainTabScene */,
 				05F48BFD2C9472A300DABF81 /* HomeScene */,
 				05F48C032C94745200DABF81 /* GameScene */,
+				0586281A2CA824E400BB44B4 /* LeaderboardScene */,
+				058628212CA8254900BB44B4 /* SettingScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -360,13 +409,16 @@
 			files = (
 				05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */,
 				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
+				0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
+				058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */,
 				058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */,
 				05F48C022C9472CD00DABF81 /* HomeViewModel.swift in Sources */,
 				05F48C082C94748200DABF81 /* GameViewController.swift in Sources */,
 				05F48C0D2C9600CB00DABF81 /* GameState.swift in Sources */,
 				05F48BFC2C94705500DABF81 /* HomeViewController.swift in Sources */,
+				058628172CA8228200BB44B4 /* MainTabBarViewController.swift in Sources */,
 				058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */,
 				05F48C0A2C9476E200DABF81 /* GameViewModel.swift in Sources */,
 			);
@@ -512,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
@@ -548,7 +600,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Millisecond/Info.plist;
