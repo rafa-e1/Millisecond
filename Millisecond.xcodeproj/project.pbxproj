@@ -14,6 +14,9 @@
 		0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586281E2CA8250E00BB44B4 /* LeaderboardViewController.swift */; };
 		058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058628232CA8256000BB44B4 /* SettingViewController.swift */; };
 		058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */; };
+		05A130442CAABF48007BF4FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130432CAABF48007BF4FB /* LoginViewController.swift */; };
+		05A130472CAAC20B007BF4FB /* timer.json in Resources */ = {isa = PBXBuildFile; fileRef = 05A130462CAAC20B007BF4FB /* timer.json */; };
+		05A130482CAAC20B007BF4FB /* thunder.json in Resources */ = {isa = PBXBuildFile; fileRef = 05A130452CAAC20B007BF4FB /* thunder.json */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
 		05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F48BE62C9467C200DABF81 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		0586281E2CA8250E00BB44B4 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		058628232CA8256000BB44B4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		058C8D1B2CA140C7002EC995 /* SegmentedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedProgressBar.swift; sourceTree = "<group>"; };
+		05A130432CAABF48007BF4FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		05A130452CAAC20B007BF4FB /* thunder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thunder.json; sourceTree = "<group>"; };
+		05A130462CAAC20B007BF4FB /* timer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timer.json; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		05A130402CAABEDB007BF4FB /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				05A130422CAABEF0007BF4FB /* View */,
+				05A130412CAABEE7007BF4FB /* ViewModel */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		05A130412CAABEE7007BF4FB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		05A130422CAABEF0007BF4FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05A130432CAABF48007BF4FB /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		05F48BD12C9467C000DABF81 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +199,8 @@
 		05F48BF22C9469B600DABF81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05A130452CAAC20B007BF4FB /* thunder.json */,
+				05A130462CAAC20B007BF4FB /* timer.json */,
 				0586275F2CA3F40A00BB44B4 /* Splash */,
 				05F48BE62C9467C200DABF81 /* Assets.xcassets */,
 				05F48BE82C9467C200DABF81 /* LaunchScreen.storyboard */,
@@ -188,6 +220,7 @@
 		05F48BF42C946A1A00DABF81 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				05A130402CAABEDB007BF4FB /* LoginScene */,
 				058628192CA824CA00BB44B4 /* MainTabScene */,
 				05F48BFD2C9472A300DABF81 /* HomeScene */,
 				05F48C032C94745200DABF81 /* GameScene */,
@@ -353,6 +386,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				058627612CA3F41E00BB44B4 /* logo.png in Resources */,
+				05A130472CAAC20B007BF4FB /* timer.json in Resources */,
+				05A130482CAAC20B007BF4FB /* thunder.json in Resources */,
 				05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */,
 				05F48BEA2C9467C200DABF81 /* Base in Resources */,
 			);
@@ -410,6 +445,7 @@
 				05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */,
 				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
 				0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */,
+				05A130442CAABF48007BF4FB /* LoginViewController.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
 				058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */,
