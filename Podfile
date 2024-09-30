@@ -10,7 +10,8 @@ target 'Millisecond' do
   pod 'RxCocoa', '6.7.1'
   pod 'SnapKit', '~> 5.7.0'
   pod 'Then'
-
+  pod 'lottie-ios'
+  
 end
 
 post_install do |installer|
