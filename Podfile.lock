@@ -1191,6 +1191,13 @@ PODS:
     - leveldb-library (~> 1.22)
     - nanopb (~> 3.30910.0)
   - FirebaseSharedSwift (11.3.0)
+  - FirebaseStorage (11.3.0):
+    - FirebaseAppCheckInterop (~> 11.0)
+    - FirebaseAuthInterop (~> 11.0)
+    - FirebaseCore (~> 11.0)
+    - FirebaseCoreExtension (~> 11.0)
+    - GoogleUtilities/Environment (~> 8.0)
+    - GTMSessionFetcher/Core (~> 3.4)
   - GoogleUtilities/AppDelegateSwizzler (8.0.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -1323,6 +1330,7 @@ PODS:
 DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
+  - FirebaseStorage
   - lottie-ios
   - RxCocoa (= 6.7.1)
   - RxSwift (= 6.7.1)
@@ -1342,6 +1350,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreInternal
     - FirebaseSharedSwift
+    - FirebaseStorage
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -1368,6 +1377,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: e83d088457c90adb2abff42e5c0aaa592151e5ac
   FirebaseFirestoreInternal: 6492b7efdab5085ccd674e53591d5ebf5065d7f3
   FirebaseSharedSwift: d39c2ad64a11a8d936ce25a42b00df47078bb59c
+  FirebaseStorage: d011ded57cc2c5904bbba947f269db506a788ea0
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   "gRPC-C++": 2fa52b3141e7789a28a737f251e0c45b4cb20a87
   gRPC-Core: a27c294d6149e1c39a7d173527119cfbc3375ce4
@@ -1382,6 +1392,6 @@ SPEC CHECKSUMS:
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 403a9b693e27ff0c2065f381a6ccd0b8db58f4e0
+PODFILE CHECKSUM: 02b11e3d57889145499c3b907c3ced37cd82e67d
 
 COCOAPODS: 1.15.2

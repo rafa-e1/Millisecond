@@ -5,15 +5,15 @@
 	<key>API_KEY</key>
 	<string>$(API_KEY)</string>
 	<key>GCM_SENDER_ID</key>
-	<string>143211473458</string>
+	<string>996309836762</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.rafa.Millisecond</string>
 	<key>PROJECT_ID</key>
-	<string>millisecond-d0d82</string>
+	<string>millisecond-1cd8a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>millisecond-d0d82.appspot.com</string>
+	<string>millisecond-1cd8a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:143211473458:ios:548baab1e1fb22a27eea2b</string>
+	<string>1:996309836762:ios:b9d35604085edeeb1ad6e3</string>
 </dict>
 </plist>

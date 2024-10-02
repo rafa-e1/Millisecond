@@ -13,6 +13,7 @@ target 'Millisecond' do
   pod 'lottie-ios'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseStorage'
   
 end
 

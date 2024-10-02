@@ -17,8 +17,13 @@
 		05A130442CAABF48007BF4FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130432CAABF48007BF4FB /* LoginViewController.swift */; };
 		05A1304B2CAAD424007BF4FB /* timer.json in Resources */ = {isa = PBXBuildFile; fileRef = 05A1304A2CAAD424007BF4FB /* timer.json */; };
 		05A1304D2CAAD637007BF4FB /* thunder.json in Resources */ = {isa = PBXBuildFile; fileRef = 05A1304C2CAAD637007BF4FB /* thunder.json */; };
-		05A130542CACD43D007BF4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A130532CACD43D007BF4FB /* GoogleService-Info.plist */; };
 		05A130562CACD5AC007BF4FB /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 05A130552CACD5AC007BF4FB /* Secrets.xcconfig */; };
+		05A1306C2CAD21BE007BF4FB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1306B2CAD21BE007BF4FB /* AuthService.swift */; };
+		05A130712CAD22B3007BF4FB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130702CAD22B3007BF4FB /* LoginViewModel.swift */; };
+		05A130752CAD296C007BF4FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A130742CAD296C007BF4FB /* GoogleService-Info.plist */; };
+		05A1307B2CAD3DA6007BF4FB /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307A2CAD3DA6007BF4FB /* Credentials.swift */; };
+		05A1307D2CAD3DB8007BF4FB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307C2CAD3DB8007BF4FB /* Constants.swift */; };
+		05A1307F2CAD3EC4007BF4FB /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307E2CAD3EC4007BF4FB /* ImageUploader.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
 		05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F48BE62C9467C200DABF81 /* Assets.xcassets */; };
@@ -43,8 +48,13 @@
 		05A130432CAABF48007BF4FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05A1304A2CAAD424007BF4FB /* timer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timer.json; sourceTree = "<group>"; };
 		05A1304C2CAAD637007BF4FB /* thunder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thunder.json; sourceTree = "<group>"; };
-		05A130532CACD43D007BF4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05A130552CACD5AC007BF4FB /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		05A1306B2CAD21BE007BF4FB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		05A130702CAD22B3007BF4FB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		05A130742CAD296C007BF4FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05A1307A2CAD3DA6007BF4FB /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		05A1307C2CAD3DB8007BF4FB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05A1307E2CAD3EC4007BF4FB /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 		05A130402CAABEDB007BF4FB /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				05A1306D2CAD2233007BF4FB /* Model */,
 				05A130422CAABEF0007BF4FB /* View */,
 				05A130412CAABEE7007BF4FB /* ViewModel */,
 			);
@@ -150,6 +161,7 @@
 		05A130412CAABEE7007BF4FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				05A130702CAD22B3007BF4FB /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,6 +181,31 @@
 				05A1304C2CAAD637007BF4FB /* thunder.json */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		05A130692CAD2166007BF4FB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				05A1306B2CAD21BE007BF4FB /* AuthService.swift */,
+				05A1307E2CAD3EC4007BF4FB /* ImageUploader.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		05A1306A2CAD218F007BF4FB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				05A1307C2CAD3DB8007BF4FB /* Constants.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		05A1306D2CAD2233007BF4FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05A1307A2CAD3DA6007BF4FB /* Credentials.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		05F48BD12C9467C000DABF81 = {
@@ -193,7 +230,7 @@
 		05F48BDC2C9467C000DABF81 /* Millisecond */ = {
 			isa = PBXGroup;
 			children = (
-				05A130532CACD43D007BF4FB /* GoogleService-Info.plist */,
+				05A130742CAD296C007BF4FB /* GoogleService-Info.plist */,
 				05F48BEB2C9467C200DABF81 /* Info.plist */,
 				05F48BF22C9469B600DABF81 /* Resources */,
 				05F48BF12C9469AA00DABF81 /* Sources */,
@@ -206,6 +243,7 @@
 			children = (
 				05F48BF32C9469D800DABF81 /* App */,
 				05F48BF42C946A1A00DABF81 /* Scenes */,
+				05A130692CAD2166007BF4FB /* API */,
 				05F48BF72C946B0500DABF81 /* Common */,
 			);
 			path = Sources;
@@ -249,6 +287,7 @@
 			children = (
 				05F48BF82C946B1B00DABF81 /* Base */,
 				058627772CA3F96200BB44B4 /* Extension */,
+				05A1306A2CAD218F007BF4FB /* Util */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -405,7 +444,7 @@
 				05F48BEA2C9467C200DABF81 /* Base in Resources */,
 				05A1304D2CAAD637007BF4FB /* thunder.json in Resources */,
 				05A1304B2CAAD424007BF4FB /* timer.json in Resources */,
-				05A130542CACD43D007BF4FB /* GoogleService-Info.plist in Resources */,
+				05A130752CAD296C007BF4FB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,20 +498,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */,
+				05A1307D2CAD3DB8007BF4FB /* Constants.swift in Sources */,
 				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
 				0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */,
 				05A130442CAABF48007BF4FB /* LoginViewController.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
 				058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */,
+				05A130712CAD22B3007BF4FB /* LoginViewModel.swift in Sources */,
 				058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */,
 				05F48C022C9472CD00DABF81 /* HomeViewModel.swift in Sources */,
 				05F48C082C94748200DABF81 /* GameViewController.swift in Sources */,
 				05F48C0D2C9600CB00DABF81 /* GameState.swift in Sources */,
+				05A1307B2CAD3DA6007BF4FB /* Credentials.swift in Sources */,
 				05F48BFC2C94705500DABF81 /* HomeViewController.swift in Sources */,
 				058628172CA8228200BB44B4 /* MainTabBarViewController.swift in Sources */,
 				058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */,
+				05A1307F2CAD3EC4007BF4FB /* ImageUploader.swift in Sources */,
 				05F48C0A2C9476E200DABF81 /* GameViewModel.swift in Sources */,
+				05A1306C2CAD21BE007BF4FB /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +536,7 @@
 /* Begin XCBuildConfiguration section */
 		05F48BEC2C9467C200DABF81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE3A139FE4FAF0783083CDC0 /* Pods-Millisecond.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -555,6 +600,7 @@
 		};
 		05F48BED2C9467C200DABF81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E2466FADCA52612520E0C36 /* Pods-Millisecond.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -615,6 +661,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
@@ -651,6 +699,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7WULLR98GP;
