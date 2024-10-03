@@ -10,11 +10,11 @@ import UIKit
 import Lottie
 import RxSwift
 
-final class LoginViewController: BaseViewController {
+final class LoginIntroViewController: BaseViewController {
 
     // MARK: - Properties
 
-    private let viewModel = LoginViewModel()
+    private let viewModel = LoginIntroViewModel()
 
     private let welcomeLabel = UILabel()
     private let thunderAnimationView = LottieAnimationView(name: "thunder")
@@ -32,27 +32,11 @@ final class LoginViewController: BaseViewController {
     // MARK: - Actions
 
     @objc private func handleLogin() {
-        viewModel.input.emailLoginTapped.onNext(())
     }
 
     // MARK: - Bindings
 
     private func bindViewModel() {
-        viewModel.output.signInSuccess
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] success in
-                if success {
-                    self?.navigateToMainTabBarVC()
-                }
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.output.errorMessage
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] errorMessage in
-                self?.showErrorAlert(message: errorMessage)
-            })
-            .disposed(by: disposeBag)
     }
 
     // MARK: - Helpers
