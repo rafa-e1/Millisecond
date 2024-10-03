@@ -5,24 +5,75 @@
 //  Created by RAFA on 9/30/24.
 //
 
-import AuthenticationServices
 import UIKit
 
 import Lottie
+import RxSwift
 
 final class LoginViewController: BaseViewController {
+
+    // MARK: - Properties
+
+    private let viewModel = LoginViewModel()
 
     private let welcomeLabel = UILabel()
     private let thunderAnimationView = LottieAnimationView(name: "thunder")
     private let timerAnimationView = LottieAnimationView(name: "timer")
-    private let appleSignInButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+    private let emailLoginButton = UIButton(type: .system)
+
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bindViewModel()
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleLogin() {
+        viewModel.input.emailLoginTapped.onNext(())
+    }
+
+    // MARK: - Bindings
+
+    private func bindViewModel() {
+        viewModel.output.signInSuccess
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] success in
+                if success {
+                    self?.navigateToMainTabBarVC()
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.errorMessage
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] errorMessage in
+                self?.showErrorAlert(message: errorMessage)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    // MARK: - Helpers
+
+    private func navigateToMainTabBarVC() {
+    }
+
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    // MARK: - UI
 
     override func setupUI() {
         view.backgroundColor = .backgroundColor
 
         welcomeLabel.do {
-            $0.text = "Welcome"
-            $0.font = .systemFont(ofSize: 70, weight: .heavy)
+            $0.text = "Millisecond"
+            $0.font = .systemFont(ofSize: 60, weight: .heavy)
             $0.textColor = .white
             $0.textAlignment = .center
         }
@@ -38,10 +89,38 @@ final class LoginViewController: BaseViewController {
             $0.loopMode = .loop
             $0.play()
         }
+
+        emailLoginButton.do {
+            var config = UIButton.Configuration.filled()
+            config.image = UIImage(systemName: "envelope")
+            config.imagePlacement = .leading
+            config.imagePadding = 5
+            config.baseForegroundColor = .black
+            config.baseBackgroundColor = .white
+
+            $0.configuration = config
+            $0.setAttributedTitle(
+                NSAttributedString(
+                    string: "Email로 로그인",
+                    attributes: [
+                        .font: UIFont.systemFont(ofSize: 20, weight: .semibold),
+                        .foregroundColor: UIColor.black
+                    ]
+                ),
+                for: .normal
+            )
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 10
+            $0.addTarget(
+                self,
+                action: #selector(handleLogin),
+                for: .touchUpInside
+            )
+        }
     }
 
     override func setupSubviews() {
-        [welcomeLabel, thunderAnimationView, timerAnimationView, appleSignInButton].forEach {
+        [welcomeLabel, thunderAnimationView, timerAnimationView, emailLoginButton].forEach {
             view.addSubview($0)
         }
     }
@@ -64,7 +143,7 @@ final class LoginViewController: BaseViewController {
             $0.size.equalTo(250)
         }
 
-        appleSignInButton.snp.makeConstraints {
+        emailLoginButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
             $0.width.equalTo(343)
