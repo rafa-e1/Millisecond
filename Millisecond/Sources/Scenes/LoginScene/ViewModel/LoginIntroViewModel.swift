@@ -17,7 +17,7 @@ final class LoginIntroViewModel {
     }
 
     struct Output {
-        let signInSuccess: Driver<Bool>
+        let navigateToLogin: Driver<Void>
     }
 
     // MARK: - Properties
@@ -31,9 +31,9 @@ final class LoginIntroViewModel {
 
     init() {
         let emailLoginTapped = PublishRelay<Void>()
-        let signInSuccess = signInSuccessRelay.asDriver(onErrorJustReturn: false)
+        let navigateToLogin = emailLoginTapped.asDriver(onErrorJustReturn: ())
 
         self.input = Input(emailLoginTapped: emailLoginTapped)
-        self.output = Output(signInSuccess: signInSuccess, errorMessage: errorMessage)
+        self.output = Output(navigateToLogin: navigateToLogin)
     }
 }
