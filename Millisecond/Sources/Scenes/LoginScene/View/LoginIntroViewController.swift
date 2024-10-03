@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LoginIntroViewController.swift
 //  Millisecond
 //
 //  Created by RAFA on 9/30/24.
@@ -29,25 +29,33 @@ final class LoginIntroViewController: BaseViewController {
         bindViewModel()
     }
 
-    // MARK: - Actions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-    @objc private func handleLogin() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     // MARK: - Bindings
 
     private func bindViewModel() {
+        emailLoginButton.rx.tap
+            .bind(to: viewModel.input.emailLoginTapped)
+            .disposed(by: disposeBag)
+
+        viewModel.output.navigateToLogin
+            .drive(onNext: { [weak self] in
+                self?.navigateToLoginVC()
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Helpers
 
-    private func navigateToMainTabBarVC() {
-    }
-
-    private func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func navigateToLoginVC() {
+        let loginVC = LoginViewController()
+        navigationController?.pushViewController(loginVC, animated: true)
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.tintColor = .white
     }
 
     // MARK: - UI
@@ -95,11 +103,6 @@ final class LoginIntroViewController: BaseViewController {
             )
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 10
-            $0.addTarget(
-                self,
-                action: #selector(handleLogin),
-                for: .touchUpInside
-            )
         }
     }
 
