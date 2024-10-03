@@ -27,6 +27,7 @@
 		05A130812CAE7CA7007BF4FB /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */; };
 		05A130832CAE7CC8007BF4FB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130822CAE7CC8007BF4FB /* RegistrationViewModel.swift */; };
 		05A130852CAE7E4E007BF4FB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130842CAE7E4E007BF4FB /* LoginViewModel.swift */; };
+		05A130872CAE85A9007BF4FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130862CAE85A9007BF4FB /* LoginViewController.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
 		05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F48BE62C9467C200DABF81 /* Assets.xcassets */; };
@@ -61,6 +62,8 @@
 		05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		05A130822CAE7CC8007BF4FB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		05A130842CAE7E4E007BF4FB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		05A130862CAE85A9007BF4FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		05A130882CAE89DF007BF4FB /* Millisecond.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Millisecond.entitlements; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				05A130432CAABF48007BF4FB /* LoginIntroViewController.swift */,
+				05A130862CAE85A9007BF4FB /* LoginViewController.swift */,
 				05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */,
 			);
 			path = View;
@@ -239,6 +243,7 @@
 		05F48BDC2C9467C000DABF81 /* Millisecond */ = {
 			isa = PBXGroup;
 			children = (
+				05A130882CAE89DF007BF4FB /* Millisecond.entitlements */,
 				05A130742CAD296C007BF4FB /* GoogleService-Info.plist */,
 				05F48BEB2C9467C200DABF81 /* Info.plist */,
 				05F48BF22C9469B600DABF81 /* Resources */,
@@ -518,6 +523,7 @@
 				058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */,
 				05A130712CAD22B3007BF4FB /* LoginIntroViewModel.swift in Sources */,
 				058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */,
+				05A130872CAE85A9007BF4FB /* LoginViewController.swift in Sources */,
 				05F48C022C9472CD00DABF81 /* HomeViewModel.swift in Sources */,
 				05F48C082C94748200DABF81 /* GameViewController.swift in Sources */,
 				05F48C0D2C9600CB00DABF81 /* GameState.swift in Sources */,
@@ -673,7 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Millisecond/Millisecond.entitlements;
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
@@ -711,7 +717,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Millisecond/Millisecond.entitlements;
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;

@@ -2,22 +2,28 @@
 //  LoginViewModel.swift
 //  Millisecond
 //
-//  Created by RAFA on 10/2/24.
+//  Created by RAFA on 10/3/24.
 //
 
+import UIKit
+
+import RxCocoa
 import RxSwift
 
-final class LoginViewModel: NSObject {
+final class LoginViewModel {
 
     // MARK: - Input/Output
 
     struct Input {
-        let emailLoginTapped: PublishSubject<Void>
+        let email: BehaviorRelay<String>
+        let password: BehaviorRelay<String>
+        let nickname: BehaviorRelay<String>
     }
 
     struct Output {
-        let signInSuccess: PublishSubject<Bool>
-        let errorMessage: PublishSubject<String>
+        let isFormValid: Driver<Bool>
+        let buttonBackgroundColor: Driver<UIColor>
+        let buttonTintColor: Driver<UIColor>
     }
 
     // MARK: - Properties
@@ -29,26 +35,36 @@ final class LoginViewModel: NSObject {
 
     // MARK: - Initializer
 
-    override init() {
-        let emailLoginTapped = PublishSubject<Void>()
-        let signInSuccess = PublishSubject<Bool>()
-        let errorMessage = PublishSubject<String>()
+    init() {
+        let emailRelay = BehaviorRelay<String>(value: "")
+        let passwordRelay = BehaviorRelay<String>(value: "")
+        let nicknameRelay = BehaviorRelay<String>(value: "")
 
-        self.input = Input(emailLoginTapped: emailLoginTapped)
-        self.output = Output(signInSuccess: signInSuccess, errorMessage: errorMessage)
+        let isFormValid = Observable
+            .combineLatest(emailRelay, passwordRelay, nicknameRelay)
+            .map { email, password, nickname in
+                return !email.isEmpty && !password.isEmpty && !nickname.isEmpty
+            }
+            .asDriver(onErrorJustReturn: false)
 
-        super.init()
+        let buttonBackgroundColor = isFormValid
+            .map { $0 ? UIColor.white : .white.withAlphaComponent(0.2) }
+            .asDriver()
 
-        bindInput()
-    }
+        let buttonTintColor = isFormValid
+            .map { $0 ? UIColor.black : .black.withAlphaComponent(0.67) }
+            .asDriver()
 
-    // MARK: - Helpers
+        self.input = Input(
+            email: emailRelay,
+            password: passwordRelay,
+            nickname: nicknameRelay
+        )
 
-    private func bindInput() {
-        input.emailLoginTapped
-            .subscribe(onNext: { [weak self] in
-                
-            })
-            .disposed(by: disposeBag)
+        self.output = Output(
+            isFormValid: isFormValid,
+            buttonBackgroundColor: buttonBackgroundColor,
+            buttonTintColor: buttonTintColor
+        )
     }
 }
