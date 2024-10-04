@@ -24,10 +24,12 @@
 		05A1307B2CAD3DA6007BF4FB /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307A2CAD3DA6007BF4FB /* Credentials.swift */; };
 		05A1307D2CAD3DB8007BF4FB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307C2CAD3DB8007BF4FB /* Constants.swift */; };
 		05A1307F2CAD3EC4007BF4FB /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1307E2CAD3EC4007BF4FB /* ImageUploader.swift */; };
-		05A130812CAE7CA7007BF4FB /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */; };
+		05A130812CAE7CA7007BF4FB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130802CAE7CA7007BF4FB /* SignUpViewController.swift */; };
 		05A130832CAE7CC8007BF4FB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130822CAE7CC8007BF4FB /* RegistrationViewModel.swift */; };
 		05A130852CAE7E4E007BF4FB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130842CAE7E4E007BF4FB /* LoginViewModel.swift */; };
 		05A130872CAE85A9007BF4FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A130862CAE85A9007BF4FB /* LoginViewController.swift */; };
+		05E2A5C72CB09D0400B5D243 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A5C62CB09D0400B5D243 /* CustomTextField.swift */; };
+		05E2A5C92CB0A3D800B5D243 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A5C82CB0A3D800B5D243 /* UIButton+.swift */; };
 		05F48BDE2C9467C000DABF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDD2C9467C000DABF81 /* AppDelegate.swift */; };
 		05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */; };
 		05F48BE72C9467C200DABF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F48BE62C9467C200DABF81 /* Assets.xcassets */; };
@@ -59,11 +61,13 @@
 		05A1307A2CAD3DA6007BF4FB /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		05A1307C2CAD3DB8007BF4FB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05A1307E2CAD3EC4007BF4FB /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
-		05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		05A130802CAE7CA7007BF4FB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		05A130822CAE7CC8007BF4FB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		05A130842CAE7E4E007BF4FB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		05A130862CAE85A9007BF4FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05A130882CAE89DF007BF4FB /* Millisecond.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Millisecond.entitlements; sourceTree = "<group>"; };
+		05E2A5C62CB09D0400B5D243 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		05E2A5C82CB0A3D800B5D243 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		05F48BDA2C9467C000DABF81 /* Millisecond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millisecond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F48BDD2C9467C000DABF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F48BDF2C9467C000DABF81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 		058627772CA3F96200BB44B4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				05E2A5C82CB0A3D800B5D243 /* UIButton+.swift */,
 				058627782CA3F96F00BB44B4 /* UIColor+.swift */,
 			);
 			path = Extension;
@@ -182,7 +187,8 @@
 			children = (
 				05A130432CAABF48007BF4FB /* LoginIntroViewController.swift */,
 				05A130862CAE85A9007BF4FB /* LoginViewController.swift */,
-				05A130802CAE7CA7007BF4FB /* RegistrationViewController.swift */,
+				05A130802CAE7CA7007BF4FB /* SignUpViewController.swift */,
+				05E2A5C62CB09D0400B5D243 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,8 +524,10 @@
 				058C8D1C2CA140C7002EC995 /* SegmentedProgressBar.swift in Sources */,
 				0586281F2CA8250E00BB44B4 /* LeaderboardViewController.swift in Sources */,
 				05A130442CAABF48007BF4FB /* LoginIntroViewController.swift in Sources */,
+				05E2A5C92CB0A3D800B5D243 /* UIButton+.swift in Sources */,
 				05F48BE02C9467C000DABF81 /* SceneDelegate.swift in Sources */,
 				05F48BF62C946B0300DABF81 /* BaseViewController.swift in Sources */,
+				05E2A5C72CB09D0400B5D243 /* CustomTextField.swift in Sources */,
 				058628242CA8256000BB44B4 /* SettingViewController.swift in Sources */,
 				05A130712CAD22B3007BF4FB /* LoginIntroViewModel.swift in Sources */,
 				058627792CA3F96F00BB44B4 /* UIColor+.swift in Sources */,
@@ -532,7 +540,7 @@
 				058628172CA8228200BB44B4 /* MainTabBarViewController.swift in Sources */,
 				058627752CA3F93A00BB44B4 /* Scoreboard.swift in Sources */,
 				05A1307F2CAD3EC4007BF4FB /* ImageUploader.swift in Sources */,
-				05A130812CAE7CA7007BF4FB /* RegistrationViewController.swift in Sources */,
+				05A130812CAE7CA7007BF4FB /* SignUpViewController.swift in Sources */,
 				05F48C0A2C9476E200DABF81 /* GameViewModel.swift in Sources */,
 				05A1306C2CAD21BE007BF4FB /* AuthService.swift in Sources */,
 			);
