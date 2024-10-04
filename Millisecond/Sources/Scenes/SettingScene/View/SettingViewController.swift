@@ -8,8 +8,4 @@
 import UIKit
 
 final class SettingViewController: BaseViewController {
-
-    override func setupUI() {
-        view.backgroundColor = .backgroundColor
-    }
 }

@@ -8,8 +8,4 @@
 import UIKit
 
 final class LeaderboardViewController: BaseViewController {
-
-    override func setupUI() {
-        view.backgroundColor = .backgroundColor
-    }
 }

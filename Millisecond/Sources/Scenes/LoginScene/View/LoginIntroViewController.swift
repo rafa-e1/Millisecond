@@ -61,8 +61,6 @@ final class LoginIntroViewController: BaseViewController {
     // MARK: - UI
 
     override func setupUI() {
-        view.backgroundColor = .backgroundColor
-
         welcomeLabel.do {
             $0.text = "Millisecond"
             $0.font = .systemFont(ofSize: 60, weight: .heavy)

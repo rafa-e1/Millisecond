@@ -14,8 +14,4 @@ final class LoginViewController: BaseViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-
-    override func setupUI() {
-        view.backgroundColor = .backgroundColor
-    }
 }
