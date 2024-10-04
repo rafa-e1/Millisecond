@@ -112,7 +112,7 @@ final class SignUpViewController: BaseViewController {
                     string: "생성하기",
                     attributes: [
                         .font: UIFont.systemFont(ofSize: 17, weight: .semibold),
-                        .foregroundColor: UIColor.systemGray
+                        .foregroundColor: UIColor.black
                     ]
                 ),
                 for: .normal
