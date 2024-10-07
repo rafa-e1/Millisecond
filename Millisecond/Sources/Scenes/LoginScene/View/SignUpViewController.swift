@@ -14,6 +14,7 @@ final class SignUpViewController: BaseViewController {
     private var isKeyboardAlreadyShown = false
 
     private let addPhotoButton = UIButton(type: .system)
+    private var profileImage: UIImage?
     private var textFields: [UITextField] = []
     private let nicknameTextField = CustomTextField(placeholder: "닉네임", isSecure: false)
     private let emailTextField = CustomTextField(placeholder: "이메일", isSecure: false)
@@ -39,6 +40,13 @@ final class SignUpViewController: BaseViewController {
     }
 
     // MARK: - Actions
+
+    @objc private func addPhotoButtonTapped() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
 
     func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(
@@ -101,6 +109,7 @@ final class SignUpViewController: BaseViewController {
             $0.layer.masksToBounds = true
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.white.cgColor
+            $0.addTarget(self, action: #selector(addPhotoButtonTapped), for: .touchUpInside)
         }
 
         createButton.do {
@@ -187,5 +196,25 @@ extension SignUpViewController: UITextFieldDelegate {
         }
 
         return true
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
+        addPhotoButton.layer.cornerRadius =
+        addPhotoButton.frame.width / 2
+        addPhotoButton.layer.masksToBounds = true
+        addPhotoButton.setImage(
+            selectedImage.withRenderingMode(.alwaysOriginal),
+            for: .normal
+        )
+        dismiss(animated: true)
     }
 }
